@@ -63,7 +63,6 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/images/on_boarding_images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -95,3 +94,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/logos/flutter_logo.png
+  android: true
+  ios: true
+  web: false
