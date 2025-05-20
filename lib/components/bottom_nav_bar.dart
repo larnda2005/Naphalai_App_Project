@@ -5,19 +5,14 @@ class MyBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ), // Home
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: "Category",
-          ), // Category
-        ],
-      ),
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"), // Home
+        BottomNavigationBarItem(
+          icon: Icon(Icons.category),
+          label: "Category",
+        ), // Category
+      ],
     );
   }
 }

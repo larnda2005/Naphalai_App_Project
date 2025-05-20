@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:naphalai_e/pages/intro.dart';
+import 'package:naphalai_e/screens/onboarding/onboard_page.dart';
+
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -11,6 +15,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: IntroPage());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: OnboardingPage(),
+    );
   }
 }
