@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:naphalai_e/screens/authentication/sign_in.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -10,16 +11,26 @@ class OnboardingPage extends StatefulWidget {
 
 class _OnboardingPageState extends State<OnboardingPage> {
   int _selectedIndex = 0;
+  final PageController _pageController = PageController();
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
+            //! PageView
             SizedBox(
               height: 500,
               child: PageView.builder(
+                controller: _pageController,
                 onPageChanged: (value) {
                   setState(() {
                     _selectedIndex = value;
@@ -35,22 +46,62 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 },
               ),
             ),
+            const Spacer(flex: 2),
+            //! Animated Dots
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 demoData.length,
                 (index) => Padding(
-                  padding: const EdgeInsets.only(right: 6),
+                  padding: const EdgeInsets.all(6),
                   child: AnimatedDot(isActive: _selectedIndex == index),
                 ),
               ),
             ),
-            Spacer(flex: 2),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text("Get Started".toUpperCase()),
+            const SizedBox(height: 24),
+            //! Buttons
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    backgroundColor: Color(0xFFFFC4C4),
+                  ),
+                  onPressed: () {
+                    if (_selectedIndex < demoData.length - 1) {
+                      _pageController.animateToPage(
+                        _selectedIndex + 1,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.ease,
+                      );
+                    } else {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignInPage(),
+                        ),
+                      );
+                    }
+                  },
+                  child: Text(
+                    _selectedIndex == demoData.length - 1
+                        ? "ເລີ່ມເລີຍ!"
+                        : "ຕໍ່ໄປ",
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ),
@@ -58,6 +109,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 }
 
+//! Animated Dot
 class AnimatedDot extends StatelessWidget {
   const AnimatedDot({super.key, required this.isActive});
 
@@ -66,12 +118,12 @@ class AnimatedDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      height: 6,
-      width: isActive ? 20 : 6,
+      duration: const Duration(milliseconds: 300),
+      height: isActive ? 10 : 6,
+      width: isActive ? 18 : 6,
       decoration: BoxDecoration(
-        color: isActive ? Colors.blueAccent : Colors.grey,
-        borderRadius: BorderRadius.circular(12),
+        color: isActive ? Color(0xFFFFC4C4) : Colors.grey,
+        borderRadius: BorderRadius.circular(28),
       ),
     );
   }
@@ -97,13 +149,22 @@ class OnBoardContent extends StatelessWidget {
             child: SvgPicture.asset(illustration),
           ),
         ),
-        SizedBox(height: 16),
-        Text(
-          title,
-          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+        const SizedBox(height: 16),
+        Container(
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          ),
         ),
-        SizedBox(height: 8),
-        Text(text, style: TextStyle(fontSize: 20), textAlign: TextAlign.center),
+        const SizedBox(height: 8),
+        Padding(
+          padding: EdgeInsets.only(right: 24, left: 24),
+          child: Text(
+            text,
+            style: const TextStyle(fontSize: 18),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ],
     );
   }
@@ -112,17 +173,18 @@ class OnBoardContent extends StatelessWidget {
 List<Map<String, dynamic>> demoData = [
   {
     "illustration": "assets/images/onboarding/undraw_artist-at-work_yos7.svg",
-    "title": "title",
-    "text": "text",
+    "title": "ສຳຫລວດ",
+    "text": "Discover new content and artists.",
   },
   {
     "illustration": "assets/images/onboarding/undraw_cool-girl-avatar_fifz.svg",
-    "title": "idk",
-    "text": "text",
+    "title": "ສັ່ງຊື້",
+    "text": "Follow your favorite creators and get inspired.",
   },
   {
     "illustration": "assets/images/onboarding/undraw_online-review_08y6.svg",
-    "title": "title",
-    "text": "text",
+    "title": "ເລີ່ມໄດ້ເລີຍ",
+    "text":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
   },
 ];
