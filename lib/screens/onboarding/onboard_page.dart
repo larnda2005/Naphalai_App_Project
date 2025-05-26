@@ -150,11 +150,9 @@ class OnBoardContent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        Container(
-          child: Text(
-            title,
-            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
         Padding(

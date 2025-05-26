@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:naphalai_e/widgets/main_navigator.dart';
-
-void main() => runApp(const HomePage());
+import 'package:naphalai_e/widgets/bottom_navbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,7 +12,7 @@ class HomePage extends StatelessWidget {
         primarySwatch: Colors.pink,
         scaffoldBackgroundColor: Colors.pink[100],
       ),
-      home: const MainNavigation(),
+      home: const BottomNavigationBarExample(),
       debugShowCheckedModeBanner: false,
     );
   }

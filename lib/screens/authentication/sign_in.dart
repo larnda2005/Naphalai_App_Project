@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:naphalai_e/screens/home/home.dart';
 import 'package:naphalai_e/screens/authentication/sign_up.dart';
+import 'package:naphalai_e/screens/home/home.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
