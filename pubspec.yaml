@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_native_splash: ^2.4.6
   flutter_svg: ^2.1.0
+  carousel_slider_plus: ^7.1.0
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +48,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -98,8 +100,12 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
 flutter_native_splash:
-  color: "#ffffff"
-  image: assets/logos/flutter_logo.png
-  android: true
-  ios: true
-  web: false
+  color: "#FA809B"               # Background color
+  image: assets/logos/flutter_logo.png       # Your splash screen image
+  # branding: assets/branding.png  # Optional: branding image at the bottom
+  android: true                  # Enable splash on Android
+  ios: true                      # Enable splash on iOS
+
+  android_gravity: center        # Positioning for the image (e.g., center, bottom)
+  ios_content_mode: center       # Image content mode on iOS
+  fullscreen: true               # Optional: use full screen splash

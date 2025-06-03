@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naphalai_e/screens/authentication/sign_up.dart';
-import 'package:naphalai_e/screens/home/home.dart';
+import 'package:naphalai_e/widgets/bottom_navbar.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -33,7 +33,13 @@ class SignInPage extends StatelessWidget {
               ),
               const Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Sign in with e-mail'),
+                child: Text(
+                  'ເຂົ້າສູ່ລະບົບດ້ວຍຊື່ຜູ້ໃຊ້ ຫຼື ອີເມວ',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'NotoSansLao-Regular',
+                  ),
+                ),
               ),
               const SizedBox(height: 32),
               _buildTextField("ຊື່ຜູ້ໃຊ້:", "ຊື່ຜູ້ໃຊ້...", false),
@@ -51,7 +57,9 @@ class SignInPage extends StatelessWidget {
               _buildMainButton("ເຂົ້າສູ່ລະບົບ", () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (_) => const HomePage()),
+                  MaterialPageRoute(
+                    builder: (_) => const NavigationMenu(selectedIndex: 0),
+                  ),
                 );
               }),
               const SizedBox(height: 16),

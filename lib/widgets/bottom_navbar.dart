@@ -32,7 +32,6 @@ class _NavigationMenuState extends State<NavigationMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sticky Bar')),
       body: pages[_selectedIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10.0),

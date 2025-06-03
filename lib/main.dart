@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:naphalai_e/screens/home/home.dart';
-import 'package:naphalai_e/widgets/bottom_navbar.dart';
+import 'package:naphalai_e/screens/onboarding/onboard_page.dart';
+// import 'package:naphalai_e/widgets/bottom_navbar.dart';
 // import 'package:naphalai_e/screens/onboarding/onboard_page.dart';
 
 void main() {
@@ -15,13 +15,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  get selectedIndex => 0;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavigationMenu(selectedIndex: selectedIndex),
+      home: OnboardingPage(), // Replace with your actual onboarding page
     );
   }
 }
