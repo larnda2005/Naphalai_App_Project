@@ -1,16 +1,38 @@
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider_plus/carousel_controller.dart';
 
 class CarouselDemo extends StatelessWidget {
-  CarouselSliderController buttonCarouselController =
+  final CarouselSliderController buttonCarouselController =
       CarouselSliderController();
+
+  CarouselDemo({super.key});
 
   @override
   Widget build(BuildContext context) => Column(
     children: <Widget>[
       CarouselSlider(
-        items: child,
+        items: [
+          Container(
+            margin: EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              image: DecorationImage(
+                image: NetworkImage('https://via.placeholder.com/400x200'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              image: DecorationImage(
+                image: NetworkImage('https://via.placeholder.com/400x200?text=Second'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
         controller: buttonCarouselController,
         options: CarouselOptions(
           autoPlay: false,
@@ -20,14 +42,14 @@ class CarouselDemo extends StatelessWidget {
           initialPage: 2,
         ),
       ),
-      RaisedButton(
-        onPressed:
-            () => buttonCarouselController.nextPage(
-              duration: Duration(milliseconds: 300),
-              curve: Curves.linear,
-            ),
+      ElevatedButton(
+        onPressed: () => buttonCarouselController.nextPage(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.linear,
+        ),
         child: Text('→'),
       ),
     ],
   );
 }
+
